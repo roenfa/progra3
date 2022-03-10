@@ -4,22 +4,21 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Tree<T> {
-    private Node root;
+    private TreeNode<T> rootNode;
 
-    public Tree(Node root) {
-        this.root = root;
+    public Tree(TreeNode<T> rootNode) {
+        this.rootNode = rootNode;
     }
 
-    public void drawLevelOrder(){
-        if(this.root == null) return;
+    public void print() {
+        Queue<TreeNode<T>> queue = new LinkedList<>();
+        queue.add(this.rootNode);//1
 
-        Queue<Node<T>> queue = new LinkedList<>();
-        queue.add(this.root);
-
-        while(!queue.isEmpty()) {
-            int len = queue.size();
-            for(var i = 0; i < len; i++) { // so that we can reach each level
-                Node<T> currentNode = queue.remove();
+        // cycle
+        while (!queue.isEmpty()) {
+            var queueSize = queue.size(); //1
+            for (var i = 0; i < queueSize; i++) {
+                var currentNode = queue.remove();// queue is empty
                 System.out.print(currentNode.getData() + " ");
                 queue.addAll(currentNode.getChildren());
             }

@@ -2,19 +2,27 @@ package com.universidad.salesiana.examples;
 
 public class Main {
     public static void main(String args[]) {
-        Node<Integer> root = new Node<Integer>(1);
-        root.getChildren().add(new Node<>(2));
-        root.getChildren().add(new Node<>(3));
-        root.getChildren().add(new Node<>(4));
+        TreeNode<Integer> rootNode = new TreeNode<Integer>(1);
+        rootNode.getChildren().add(new TreeNode<Integer>(2));
+        rootNode.getChildren().add(new TreeNode<Integer>(3));
+        rootNode.getChildren().add(new TreeNode<Integer>(4));
 
-        Node<Integer> child1 = root.getChildren().get(0);
-        child1.getChildren().add(new Node<>(5));
-        child1.getChildren().add(new Node<>(6));
+        var child1 = rootNode.getChildren().get(0); // first child of root node
+        child1.getChildren().add(new TreeNode<Integer>(5));
+        child1.getChildren().add(new TreeNode<Integer>(6));
 
-        Node<Integer> child3 = root.getChildren().get(2);
-        child3.getChildren().add(new Node<>(7));
+        var child3 = rootNode.getChildren().get(2); // thrid child of root node
+        child3.getChildren().add(new TreeNode<Integer>(7));
 
-        Tree tree = new Tree(root);
-        tree.drawLevelOrder();
+        Tree tree = new Tree(rootNode);
+        tree.print();
+
+        //      1            -> 0
+        //  2   3   4        -> 1
+        //5  6     7         -> 2
+
+        //1
+        //2 3 4
+        //5 6 7
     }
 }
